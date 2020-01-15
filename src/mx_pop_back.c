@@ -8,6 +8,7 @@ void mx_pop_back(t_list **head) {
         if (ptr->next == NULL) {
             free(ptr);
             *head = NULL;
+            return;
         }
         else {
             while (ptr->next->next != NULL)
@@ -16,4 +17,5 @@ void mx_pop_back(t_list **head) {
             ptr->next = NULL;
         }
     }
+    return;
 }

@@ -1,7 +1,8 @@
 #include "libmx.h"
 
 void mx_str_reverse(char *s) {
-    char *start, *end;
+    char *start;
+    char *end;
     int len;
 
     if (s) {

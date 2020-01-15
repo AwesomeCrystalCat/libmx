@@ -3,13 +3,10 @@
 char *mx_strcpy(char *dst, const char *src) {
     int i = 0;
 
-    if (src && dst) {
-        while (src[i] != '\0') {
-            dst[i] = src[i];
-            i++;
-        }
-        dst[i] = '\0';
-        return dst;
+    while (src[i] != '\0') {
+        dst[i] = src[i];
+        i++;
     }
-    return 0;
+    dst[i] = '\0';
+    return dst;
 }

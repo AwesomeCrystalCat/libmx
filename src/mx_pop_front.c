@@ -8,4 +8,5 @@ void mx_pop_front(t_list **head) {
         *head = ptr->next;
         free(ptr);
     }
+    return;
 }

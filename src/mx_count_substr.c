@@ -1,7 +1,7 @@
 #include "libmx.h"
 
 int mx_count_substr(const char *str, const char *sub) {
-    char *tail;
+    char *tail = NULL;
     int count = 0;
 
     if (str && sub) {
@@ -9,7 +9,7 @@ int mx_count_substr(const char *str, const char *sub) {
         if (tail[0] == '\0' || sub[0] == '\0')
             return 0;
         while (mx_strlen(tail) > 0) {
-            if (mx_strcmp1(tail, sub) == 1) {
+            if (mx_strncmp(tail, sub) == 1) {
                 count++;
                 tail = tail + mx_strlen(sub);
             }

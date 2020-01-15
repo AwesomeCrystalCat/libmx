@@ -7,7 +7,7 @@ void mx_printint(int n) {
         n = 147483648;
     }
     if (n < 0) {
-    mx_printchar('-');
+        mx_printchar('-');
         n = -n;
     }
     if (n > 9) {

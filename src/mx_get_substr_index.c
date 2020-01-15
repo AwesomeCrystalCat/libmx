@@ -2,14 +2,15 @@
 
 int mx_get_substr_index(const char *str, const char *sub) {
     char *tail = NULL;
-    int len, count;
+    int len;
+    int count;
 
     if (str && sub && mx_strlen(sub) > 0) {
         tail = (char *)&str[0];
         len = mx_strlen(str);
         count = 0;
         for (; count < len; count++) {
-            if (mx_strcmp1(tail, sub) == 1)
+            if (mx_strncmp(tail, sub) == 1)
                 return count;
                 tail++;
             }

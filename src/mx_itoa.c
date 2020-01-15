@@ -20,7 +20,7 @@ static int count_len(int number) {
 }
 
 char *mx_itoa(int number) {
-    char *str;
+    char *str = NULL;
     int len = count_len(number);
 
     str = mx_strnew(len);

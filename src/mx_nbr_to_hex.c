@@ -4,7 +4,7 @@ char *mx_nbr_to_hex(unsigned long nbr) {
     unsigned long dec = 0;
     unsigned long nbr1 = nbr;
     int i = 0;
-    char *hex;
+    char *hex = NULL;
 
     while (nbr > 0) {
         nbr = nbr / 16;
@@ -18,7 +18,7 @@ char *mx_nbr_to_hex(unsigned long nbr) {
             hex[i] = dec + 48;
         if (dec > 9)
             hex[i] = dec + 87;
-        nbr1 = nbr1 / 10;
+        nbr1 = nbr1 / 16;
     }
     return hex;
 }

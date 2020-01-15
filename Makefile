@@ -33,7 +33,7 @@ SRCS = ./src/mx_printchar.c \
 	./src/mx_strcat.c \
 	./src/mx_strstr.c \
 	./src/mx_get_substr_index.c \
-	./src/mx_strcmp1.c \
+	./src/mx_strncmp.c \
 	./src/mx_count_substr.c \
 	./src/mx_count_words.c \
 	./src/mx_strtrim.c \
@@ -93,7 +93,7 @@ SRCOUT = mx_printchar.c \
 	mx_strcat.c \
 	mx_strstr.c \
 	mx_get_substr_index.c \
-	mx_strcmp1.c \
+	mx_strncmp.c \
 	mx_count_substr.c \
 	mx_count_words.c \
 	mx_strtrim.c \
@@ -153,7 +153,7 @@ OBJS = ./obj/mx_printchar.o \
 	./obj/mx_strcat.o \
 	./obj/mx_strstr.o \
 	./obj/mx_get_substr_index.o \
-	./obj/mx_strcmp1.o \
+	./obj/mx_strncmp.o \
 	./obj/mx_count_substr.o \
 	./obj/mx_count_words.o \
 	./obj/mx_strtrim.o \
@@ -213,7 +213,7 @@ OBJOUT = mx_printchar.o \
 	mx_strcat.o \
 	mx_strstr.o \
 	mx_get_substr_index.o \
-	mx_strcmp1.o \
+	mx_strncmp.o \
 	mx_count_substr.o \
 	mx_count_words.o \
 	mx_strtrim.o \
@@ -246,27 +246,21 @@ OBJOUT = mx_printchar.o \
 
 CFLAG = -std=c11 -Wall -Wextra -Wpedantic -Werror
 
-all: install uninstall
+all: install clean
 
 install:
 	@cp $(SRCS) .
 	@cp $(INC) .
 	@clang $(CFLAG) -c $(SRCOUT) 
-	@mkdir obj
+	@mkdir -p obj
 	@mv $(OBJOUT) ./obj
 	@ar -rc $(NAME) $(OBJS)
+	@rm -rf $(SRCOUT) $(HEAD)
 
-uninstall:
-	@rm -rf $(SRCOUT) 
-	@rm -rf $(OBJOUT) 
-	@rm -rf $(HEAD) 
-	@rm -rf ./obj
+uninstall: clean
+	@rm -rf $(NAME)
 
 clean:
-	@rm -rf $(NAME)
-	@rm -rf $(SRCOUT)
-	@rm -rf $(OBJOUT)
-	@rm -rf $(OBJ)
-	@rm -rf $(HEAD)
+	@rm -rf obj
 
-reinstall: clean all
+reinstall: uninstall all

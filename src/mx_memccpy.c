@@ -2,20 +2,16 @@
 
 void *mx_memccpy(void *restrict dst, const void *restrict src,
 int c, size_t n) {
-    char *s = NULL;
     char *d = NULL;
-    unsigned int i = 0;
+    char *s = NULL;
 
-    if (dst && src) {
-        s = (char *) src;
-        d = (char *) dst;
-        if (s[i] == c)
-            return d + 1;
-        while (i < n) {
+    if (dst && src && n) {
+        d = (char *)dst;
+        s = (char *)src;
+        for (size_t i = 0; i < n; ++i) {
             d[i] = s[i];
             if (s[i] == c)
-                return d + i + 1;
-            i++;
+                return (void *)(d + i + 1);
         }
     }
     return NULL;

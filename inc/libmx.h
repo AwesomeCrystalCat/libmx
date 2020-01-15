@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <fcntl.h>
+#include <malloc/malloc.h>
 
 typedef struct s_list {
     void *data;
@@ -22,7 +23,7 @@ int mx_sqrt(int x);
 char *mx_nbr_to_hex(unsigned long nbr);
 unsigned long mx_hex_to_nbr(const char *hex);
 char *mx_itoa(int number);
-void mx_foreach(char *arr, int size, void (*f)(char));
+void mx_foreach(int *arr, int size, void (*f)(int));
 int mx_binary_search(char **arr, int size, const char *s, int *count);
 int mx_strcmp(const char *s1, const char *s2);
 char *mx_strnew(const int size);
@@ -41,7 +42,7 @@ int mx_strcmp(const char *s1, const char *s2);
 char *mx_strcat(char *restrict s1, const char *restrict s2);
 char *mx_strstr(const char *haystack, const char *needle);
 int mx_get_substr_index(const char *str, const char *sub);
-int mx_strcmp1(const char *s1, const char *s2); //
+int mx_strncmp(const char *s1, const char *s2); //
 int mx_count_substr(const char *str, const char *sub);
 int mx_count_words(const char *str, char c);
 char *mx_strtrim(const char *str);

@@ -3,13 +3,9 @@
 char *mx_strncpy(char *dst, const char *src, int len) {
     int i = 0;
 
-    if (src && dst) {
-        while (i < len) {
-            dst[i] = src[i];
-            i++;
-        }
+    for (; src[i] != '\0' && i < len; i++)
+        dst[i] = src[i];
+    for (; i < len; i++)
         dst[i] = '\0';
-        return dst;
-    }
-    return 0;
+    return dst;
 }

@@ -6,7 +6,7 @@ const char *sub, const char *replace) {
     int j = 0;
 
     while (i < mx_strlen(str)) {
-        if (mx_strcmp1(&str[i], sub) == 1) {
+        if (mx_strncmp(&str[i], sub) == 1) {
             mx_strncpy(&res[j], replace, mx_strlen(replace));
             i += mx_strlen(sub);
             j += mx_strlen(replace);
@@ -23,7 +23,10 @@ const char *sub, const char *replace) {
 char *mx_replace_substr(const char *str,
 const char *sub, const char *replace) {
     char *res = NULL;
-    int new_s, sub_s, rep_s, sub_n;
+    int new_s;
+    int sub_s;
+    int rep_s;
+    int sub_n;
 
     if (str != NULL && sub != NULL && replace != NULL) {
         new_s = 0;
